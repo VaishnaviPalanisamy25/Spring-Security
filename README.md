@@ -7,10 +7,10 @@ Dependencies used:
 - spring-boot-starter-security
 
 Installation steps:
-- clone the repo
-- maven update
-- build
-- run
+1. clone the repo
+2. maven update
+3. build
+4. run
   
 Steps for testing:
 
