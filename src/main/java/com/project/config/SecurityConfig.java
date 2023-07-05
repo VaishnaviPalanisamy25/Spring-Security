@@ -42,7 +42,8 @@ public class SecurityConfig {
                 .requestMatchers("/signup","/login","/getAllUsers").permitAll()
                 .and()
                 .authorizeHttpRequests().requestMatchers("/products/**")
-                .authenticated().and().formLogin().and()
+                .authenticated()
+                .and()
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

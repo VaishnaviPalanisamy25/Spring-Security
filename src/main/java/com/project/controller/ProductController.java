@@ -18,7 +18,6 @@ import com.project.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
 public class ProductController {
 
     @Autowired
@@ -32,31 +31,31 @@ public class ProductController {
     private AuthenticationManager authenticationManager;
 
 
-    @PostMapping("signup")
+    @PostMapping("/signup")
     public String addNewUser(@RequestBody UserInfo userInfo) {
         return service.addUser(userInfo);
     }
     
-    @GetMapping("getAllUsers")
+    @GetMapping("/getAllUsers")
     public List<UserInfo> getAllUsers()
     {
     	return repository.findAll();
     }
 
-    @GetMapping("products/all")
+    @GetMapping("/products/all")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<Product> getAllTheProducts() {
         return service.getProducts();
     }
 
-    @GetMapping("products/{id}")
+    @GetMapping("/products/{id}")
     @PreAuthorize("hasAuthority('ROLE_USER')")
     public Product getProductById(@PathVariable int id) {
         return service.getProduct(id);
     }
 
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
