@@ -4,7 +4,7 @@ Database Used :H2 (file) - records available after system restart
 
 Steps for testting:
 
-Step 1: Signup
+Step 1: Signup -Use postman
 url: http://localhost:8080/signup
 body: 
 {
@@ -24,7 +24,7 @@ password: vaishu
 
 since this user signed up as admin , has access to products/all and not products/{id}
 
-Step 3:
+Step 3: -Use postman
 url: http://localhost:8080/signup
 body: 
 {
