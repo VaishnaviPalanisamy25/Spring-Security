@@ -16,14 +16,14 @@ Steps for testing:
 
 Step 1: Signup -Use Postman
 POST URL: http://localhost:8080/signup
-body: 
+- body: 
 {
     "name":"Vaishnavi",
     "password":"vaishu",
     "roles":"ROLE_ADMIN",
     "email":"yyy@gmail.com"
 }
-response:
+- response:
 user added to the system 
 
 Step 2: Log in 
