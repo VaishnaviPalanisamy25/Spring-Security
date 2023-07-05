@@ -59,7 +59,7 @@ Step 5: Signup
 - response:
 user added to the system 
 
-Step 2: Log in 
+Step 6: Log in 
 - POST http://localhost:8080/login
 - body
 {
@@ -68,13 +68,13 @@ Step 2: Log in
 }
 - response: token, copy the token
 
-Step 3: Test authorization - positive test
+Step 7: Test authorization - positive test
 - This user has the role of user, hence will have access to method products/{id}
 - GET URL: http://localhost:8080/products/1 
 - In the authorization tab select the type as Bearer token and paste the token.
 - response: product of the respective id
 
-Step 4: Test authorization - negative test
+Step 8: Test authorization - negative test
 - This user has the role of user, hence will not have access to method products/all
 - GET URL: http://localhost:8080/products/all
 - In the authorization tab select the type as Bearer token and paste the token.
