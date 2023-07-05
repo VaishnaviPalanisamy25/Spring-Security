@@ -28,6 +28,7 @@ user added to the system
 
 Step 2: Log in 
 - POST http://localhost:8080/login
+- body
 {
     "username":"Vaishnavi",
     "password":"vaishu"
@@ -60,6 +61,7 @@ user added to the system
 
 Step 2: Log in 
 - POST http://localhost:8080/login
+- body
 {
     "username":"Subashni",
     "password":"suba"
