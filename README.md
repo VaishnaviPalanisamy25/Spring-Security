@@ -1,11 +1,21 @@
 # spring-security
 
-Database Used :H2 (file) - records available after system restart
+Dependencies used:
+- spring-boot-starter-data-jpa
+- com.h2database
+- io.jsonwebtoken
+- spring-boot-starter-security
 
-Steps for testting:
+Installation steps:
+- clone the repo
+- maven update
+- build
+- run
+  
+Steps for testing:
 
-Step 1: Signup -Use postman
-url: http://localhost:8080/signup
+Step 1: Signup -Use Postman
+POST URL: http://localhost:8080/signup
 body: 
 {
     "name":"Vaishnavi",
@@ -14,30 +24,57 @@ body:
     "email":"yyy@gmail.com"
 }
 response:
-user added to system 
+user added to the system 
 
-Step 2: Login 
-http://localhost:8080/products/all
-hit this url in your browser
-username: Vaishnavi
-password: vaishu
+Step 2: Log in 
+POST http://localhost:8080/login
+{
+    "username":"Vaishnavi",
+    "password":"vaishu"
+}
+response: token, copy the token
 
-since this user signed up as admin , has access to products/all and not products/{id}
+Step 3: Test authorization - positive test
+This user has the role of admin, hence will have access to method products/all
+ GET URL: http://localhost:8080/products/all 
+In the authorization tab select the type as Bearer token and paste the token.
+response: list of products
 
-Step 3: -Use postman
-url: http://localhost:8080/signup
+Step 4: Test authorization - negative test
+This user has the role of admin, hence will not have access to method products/{id}
+ GET URL: http://localhost:8080/products/1 
+In the authorization tab select the type as Bearer token and paste the token.
+response: Forbidden
+
+Step 5: Signup 
+POST URL: http://localhost:8080/signup
 body: 
 {
     "name":"Subashni",
     "password":"suba",
     "roles":"ROLE_USER",
-    "email":"yyy@gmail.com"
+    "email":"xxx@gmail.com"
 }
-Step 4: Use incognito this time
-http://localhost:8080/products/1
-hit this url in your browser
-username: Subashni
-password: suba
+response:
+user added to the system 
 
-since this user signed up as user , has access to products/{id} and not products/all
+Step 2: Log in 
+POST http://localhost:8080/login
+{
+    "username":"Subashni",
+    "password":"suba"
+}
+response: token, copy the token
+
+Step 3: Test authorization - positive test
+This user has the role of user, hence will have access to method products/{id}
+ GET URL: http://localhost:8080/products/1 
+In the authorization tab select the type as Bearer token and paste the token.
+response: product of the respective id
+
+Step 4: Test authorization - negative test
+This user has the role of user, hence will not have access to method products/all
+ GET URL: http://localhost:8080/products/all
+In the authorization tab select the type as Bearer token and paste the token.
+response: Forbidden
 
