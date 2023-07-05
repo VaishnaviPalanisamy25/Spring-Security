@@ -1,4 +1,4 @@
-# spring-boot3-jwt
+# spring-security
 
 Database Used :H2 (file) - records available after system restart
 
